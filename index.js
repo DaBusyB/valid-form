@@ -12,9 +12,15 @@ function showError(input, message) {
     small.innerText = message;
 }
 
-// function showError(input) {
-    
-// }
+function showSuccess(input) {
+    const formControl = input.parentElement;
+    formControl.className = 'form-control success';
+}
+
+function isEmailValid(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -23,5 +29,26 @@ form.addEventListener('submit', function(e) {
         showError(username, 'Username is required')
     } else {
         showSuccess(username)
+    } 
+
+    if(email.value === '') {
+        showError(email, 'Email is required')
+    } else if (!isEmailValid(email.value)) {
+        showError(email, 'An email address is required')
+    } else {
+        showSuccess(email)
     }
+
+    if(pw.value === '') {
+        showError(pw, 'Password is required')
+    } else {
+        showSuccess(pw)
+    }
+
+    if(confirmPW.value === '') {
+        showError(confirmPW, 'Confirmed password is required')
+    } else {
+        showSuccess(confirmPW)
+    }
+
 })
