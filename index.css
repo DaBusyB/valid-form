@@ -69,7 +69,27 @@ h2 {
 }
 
 .form-control small {
-    color: red;
+    color: var(--error-color);
     position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+}
+
+.form-control.error small{
+    visibility: visible;
+}
+
+.form button {
+    cursor: pointer;
+    background-color: purple;
+    border-radius: 4px;
+    color: white;
+    border: 2px solid purple;
+    display: block;
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
 }
 
