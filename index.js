@@ -22,6 +22,14 @@ function isEmailValid(email) {
     return re.test(String(email).toLowerCase());
 }
 
+function checkEmailInput(email, cb) {
+    if(!cb(email)) {
+        showError(email, 'Please use a valid email')
+    } else {
+        showSuccess(email)
+    }
+}
+
 function checkInputs(inputsArray) {
     inputsArray.forEach(function(input) {
         if(input.value.trim() === '') {
@@ -36,5 +44,5 @@ form.addEventListener('submit', function(e) {
     e.preventDefault();
 
     checkInputs([email, pw, confirmPW, username])
-
+   checkEmailInput(email.value, isEmailValid)
 })
