@@ -19,13 +19,6 @@ function showSuccess(input) {
 
 function checkInputs(inputsArray) {
     inputsArray.forEach(function(input) {
-        // if(input.value.trim() === '') {
-        //     showError(input, `${input.id} is required`)
-        //     //console.log("error 2")
-        // } else {
-        //     showSuccess(input)
-        //     //console.log("success 2")
-        // }
         return (
             input.value.trim() === '' ?
             showError(input, `${input.id} is required`) :
@@ -35,15 +28,19 @@ function checkInputs(inputsArray) {
 }
 
 function isEmailValid(email) {
-    return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.toLowerCase()) ?
-    true :
-    false);
+    return (
+        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.toLowerCase()) ?
+        true :
+        false
+    );
 }
 
 function checkEmailInput(input, cb) {
-    return (!cb(input.value.trim()) ?
-    showError(input, 'Please use a valid email') :
-    showSuccess(input));
+    return (
+        !cb(input.value.trim()) ?
+        showError(input, 'Please use a valid email') :
+        showSuccess(input)
+    );
 }
 
 function checkConfirmedPWInput(pw1, pw2) {
