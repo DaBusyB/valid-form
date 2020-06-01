@@ -23,7 +23,7 @@ function checkInputs(inputsArray) {
             input.value.trim() === '' ?
             showError(input, `${input.id} is required`) :
             showSuccess(input)
-        )
+        );
     })
 }
 
