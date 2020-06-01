@@ -31,22 +31,28 @@ function checkInputs(inputsArray) {
 }
 
 function isEmailValid(email) {
-    // const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    // return re.test(String(email).toLowerCase());
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-        return true
-    }
-    return false
+    // if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    //     return true
+    // }
+    // return false
+
+    return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.toLowerCase()) ?
+    true :
+    false);
 }
 
 function checkEmailInput(input, cb) {
-    if(!cb(input.value.trim())) {
-        showError(input, 'Please use a valid email')
-        //console.log("error 1")
-    } else {
-        showSuccess(input)
-        // console.log("success 1")
-    }
+    // if(!cb(input.value.trim())) {
+    //     showError(input, 'Please use a valid email')
+    //     //console.log("error 1")
+    // } else {
+    //     showSuccess(input)
+    //     // console.log("success 1")
+    // }
+
+   return (!cb(input.value.trim()) ?
+    showError(input, 'Please use a valid email') :
+    showSuccess(input));
 }
 
 function checkConfirmedPWInput(pw1, pw2) {
