@@ -44,7 +44,7 @@ function checkEmailInput(input, cb) {
 }
 
 function checkConfirmedPWInput(pw1, pw2) {
-    pw2.value !== pw1.value || pw1.value.length < 1 ?
+    pw2.value.trim() !== pw1.value.trim() || pw1.value.trim().length < 1 ?
     showError(pw2, `${pw2.id} must match ${pw1.id}`) :
     showSuccess(pw2);
 
