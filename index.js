@@ -10,7 +10,6 @@ function showError(input, message) {
     formControl.className = "form-control error";
     const small = formControl.querySelector('small');
     small.innerText = message;
-    //console.log(input.parentElement)
 }
 
 function showSuccess(input) {
@@ -20,37 +19,29 @@ function showSuccess(input) {
 
 function checkInputs(inputsArray) {
     inputsArray.forEach(function(input) {
-        if(input.value.trim() === '') {
-            showError(input, `${input.id} is required`)
-            //console.log("error 2")
-        } else {
+        // if(input.value.trim() === '') {
+        //     showError(input, `${input.id} is required`)
+        //     //console.log("error 2")
+        // } else {
+        //     showSuccess(input)
+        //     //console.log("success 2")
+        // }
+        return (
+            input.value.trim() === '' ?
+            showError(input, `${input.id} is required`) :
             showSuccess(input)
-            //console.log("success 2")
-        }
+        )
     })
 }
 
 function isEmailValid(email) {
-    // if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-    //     return true
-    // }
-    // return false
-
     return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.toLowerCase()) ?
     true :
     false);
 }
 
 function checkEmailInput(input, cb) {
-    // if(!cb(input.value.trim())) {
-    //     showError(input, 'Please use a valid email')
-    //     //console.log("error 1")
-    // } else {
-    //     showSuccess(input)
-    //     // console.log("success 1")
-    // }
-
-   return (!cb(input.value.trim()) ?
+    return (!cb(input.value.trim()) ?
     showError(input, 'Please use a valid email') :
     showSuccess(input));
 }
